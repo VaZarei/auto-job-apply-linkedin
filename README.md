@@ -47,12 +47,12 @@ Before using the bot, ensure you have the following installed:
 3. **The content after clone:(Project Structure)**
    ```
    linkedin-easy-apply-bot/
-   ├── config.yaml           # Configuration file config.yaml.example to config.yaml
+   ├── config.yaml.example   # Configuration file - rename the config.yaml.example to config.yaml
    ├── main.py               # Main script
    ├── linkedinZero.py       # Core bot logic
    ├── variable_values.py    # CSS selectors for LinkedIn
    ├── requirements.txt      # Dependencies
-   ├── export_data/          # Logs and output
+   ├── export_data/          # Logs and output folder - this folder will appear after first running
    │   ├── apply_status/     # Applied job history
    │   ├── errors/           # Error logs
    │   ├── tempforms/        # Form analysis
