@@ -42,9 +42,9 @@ Before using the bot, ensure you have the following installed:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/linkedin-easy-apply-bot.git
+   git clone https://github.com/VaZarei/auto-job-apply-linkedin.git
    ```
-3. **The content after clone:(Project Structure)**
+3. **The content after clone: (Project Structure)**
    ```
    linkedin-easy-apply-bot/
    ├── config.yaml.example   # Configuration file - rename the config.yaml.example to config.yaml
@@ -62,8 +62,9 @@ Before using the bot, ensure you have the following installed:
    |__ css_documents/        # All documents about CSS code locations used
    ```
 2. **Install Dependencies**:
+   After extracting the downloaded file:
    ```bash
-   cd linkedin-easy-apply-bot
+   cd auto-job-apply-linkedin-master
    ```
     ```bash
    pip install -r requirements.txt
@@ -77,7 +78,7 @@ Before using the bot, ensure you have the following installed:
    pyyaml==6.0
    validate_email==1.3
    ```
-3. **Configure the Bot**:
+4. **Configure the Bot**:
    - Rename config.yaml.example to config.yaml. This file is already located in the root directory of the code, and it’s best to keep it there.
    - If you move it, update the line yaml_file_path = "config.yaml" in main.py to the new path.
    - Edit config.yaml with your LinkedIn credentials, job preferences, and personal details (see Configuration).
