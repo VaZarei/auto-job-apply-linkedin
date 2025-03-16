@@ -44,7 +44,7 @@ Before using the bot, ensure you have the following installed:
    ```bash
    git clone https://github.com/yourusername/linkedin-easy-apply-bot.git
    ```
-3. **Content of clone**
+3. **The content after clone:(Project Structure)**
    ```
    linkedin-easy-apply-bot/
    ├── config.yaml           # Configuration file config.yaml.example to config.yaml
@@ -119,6 +119,7 @@ Before using the bot, ensure you have the following installed:
 
 ## Configuration
 
+You can find `config.yaml.example` in the root directory; please rename it to `config.yaml`.
 The bot relies on a `config.yaml` file to define its behavior. Below is a brief overview of key sections:
 
 - **Credentials**:
@@ -136,7 +137,7 @@ The bot relies on a `config.yaml` file to define its behavior. Below is a brief 
   locations:
     - England
   experienceLevel:
-    entry: True
+    entry: False
     mid-senior level: True
   jobTypes:
     full-time: True
@@ -152,6 +153,12 @@ The bot relies on a `config.yaml` file to define its behavior. Below is a brief 
   experience:
     Python: 8
     Django: 5
+    AI: 2
+    Artificial Intelligence: 2
+    Full Stack Developer: 5
+    Fast API: 4
+    MySql: 7
+    
     default: 1
   ```
 
@@ -164,25 +171,8 @@ The bot relies on a `config.yaml` file to define its behavior. Below is a brief 
 
 For a full list of configurable options, refer to the [sample config.yaml](config.yaml).
 
----
 
-## Project Structure
 
-```
-linkedin-easy-apply-bot/
-├── config.yaml           # Configuration file config.yaml.example to config.yaml
-├── main.py               # Main script
-├── linkedinZero.py       # Core bot logic
-├── variable_values.py    # CSS selectors for LinkedIn
-├── requirements.txt      # Dependencies
-├── export_data/          # Logs and output
-│   ├── apply_status/     # Applied job history
-│   ├── errors/           # Error logs
-│   ├── tempforms/        # Form analysis
-│   └── discard_company/  # Blacklisted companies
-|── README.md             # This file
-|__ css_documents/        # all documents about CSS code locations used
-```
 
 ---
 
@@ -207,14 +197,32 @@ linkedin-easy-apply-bot/
   - LinkedIn’s UI may have changed. Update the CSS selectors in `css_codes.py`.
 
 - **"Form filling failed"**:
-  - Check `config.yaml` for missing or incorrect data.
-  - Enable `maintenance: True` in `linkedinZero.py` for detailed debugging logs.
+  - Check  `config.yaml` for missing or incorrect data.
+  - Enable `self.log_main_functions_flag = True` in `linkedinZero.py` for detailed debugging logs about main functions.
+  - Enable `self.log_submain_functions_flag` in `linkedinZero.py` for detailed debugging logs about submain functions.
+  - Enable `self.log_more_informations_flag` in `linkedinZero.py` for checking the apply process in the background with details.
+  - Enable `self.log_error_message_flag` in `linkedinZero.py` for printing detailed debugging logs in the console.
+  - Check  `error_log.txt` file in `export_data\errors\` for tracking lines with error
 
 - **"Too many requests"**:
-  - LinkedIn may detect automation. Increase delays in the code or use a VPN.
+  - LinkedIn may detect automation. please continue in the next day.
+
+---
+Here’s the refined **Future Works** section in GitHub Markdown format, based on your README, with lines 2 and 3 swapped as requested. I’ve kept the structure clean and consistent with GitHub styling.
 
 ---
 
+## Future Works
+
+The LinkedIn Easy Apply Bot is poised for exciting enhancements, and I’m eager to expand its capabilities with these goals. These features aim to make the bot smarter, more engaging, and accessible—whether developed by me or with the help of contributors. Here’s what’s on the horizon:
+
+1. **AI-Powered Question Answering**: Integrate a local AI to answer job application questions intelligently, requiring minimal hardware resources. (I’m actively working on this for an upcoming release—stay tuned for a new version!)
+2. **Personalized Outreach**: Automatically send tailored messages to hiring managers, including a dedicated cover letter based on the job description and the applicant’s resume, to boost engagement and visibility.
+3. **Smarter Job Matching**: Enhance job collection by matching opportunities more closely to the user’s resume, storing links, company names, and job descriptions in the `export_data` folder for better tracking and analysis.
+4. **Networking Automation**: Identify two employees from the target company in related roles and send them personalized messages about the job application, highlighting the applicant’s resume and fit for the position.
+5. **Mobile Deployment**: Enable the bot to run on a smartphone as a lightweight server via Termux, minimizing hardware demands for broader accessibility. (I’m currently exploring this to make the project as portable as possible.)
+
+---
 ## Contributing
 
 Contributions are welcome! To contribute:
@@ -238,6 +246,26 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Disclaimer
 
 This tool is intended for personal use and educational purposes only. Automated job applications may violate LinkedIn’s Terms of Service. Use at your own risk. The author is not responsible for any account restrictions or legal consequences resulting from its use.
+
+---
+
+
+
+Here’s the updated **Acknowledgments** section with a coffee emoji (`☕`) added after "coffee" in the final line, formatted for GitHub Markdown:
+
+---
+
+## Acknowledgments
+
+A heartfelt thank you to everyone who has inspired and supported the development of the **LinkedIn Easy Apply Bot**. This project wouldn’t be possible without:
+
+- **The Open-Source Community**: For the incredible tools that power this bot, especially [Python](https://www.python.org/) for its versatility, [Selenium](https://selenium.dev/) for robust web automation, and [PyYAML](https://pyyaml.org/) for seamless configuration management.
+- **Contributors**: To those who will join this journey—your ideas, code, and feedback will shape the future of this tool. Your contributions are deeply valued.
+- **Job Seekers & Developers**: Your real-world needs and curiosity about automation sparked this project. This bot is built for you.
+- **LinkedIn Team**: For providing a platform that connects job seekers with opportunities, making tools like this bot possible and meaningful.
+- **Original Developer**: [Nathan Duma](https://github.com/NathanDuma) with [NathanDuma/LinkedIn-Easy-Apply-Bot](https://github.com/NathanDuma/LinkedIn-Easy-Apply-Bot). I initially worked with Nathan’s bot, but after it stopped functioning, I drew inspiration from his work to create this new version. About 10% of the current codebase builds on his foundation, though I’ve added my own ideas and plan to fully reimagine it in future releases. Huge thanks to Nathan Duma.
+
+Special appreciation goes to the countless cups of coffee ☕ and late-night coding sessions that fueled version 1.0.0. Here’s to building something impactful together!
 
 ---
 
