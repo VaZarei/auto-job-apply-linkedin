@@ -56,9 +56,10 @@ Before using the bot, ensure you have the following installed:
    │   ├── apply_status/     # Applied job history
    │   ├── errors/           # Error logs
    │   ├── tempforms/        # Form analysis
-   │   └── discard_company/  # Blacklisted companies
+   │   |── discard_company/  # Blacklisted companies
+   |   |__ uncover_questions # collect uncover questions
    |── README.md             # This file
-   |__ css_documents/        # all documents about CSS code locations used
+   |__ css_documents/        # All documents about CSS code locations used
    ```
 2. **Install Dependencies**:
    ```bash
@@ -127,8 +128,8 @@ The bot relies on a `config.yaml` file to define its behavior. Below is a brief 
   email: your.email@example.com
   password: yourpassword
   ```
-  > **Warning**: Keep this file offline and never commit it to version control.
-
+  > **Warning**: Keep the item unchanged because logging in is done manually after opening the Chrome instance for debugging.
+  
 - **Job Filters**:
   ```yaml
   positions:
@@ -169,7 +170,7 @@ The bot relies on a `config.yaml` file to define its behavior. Below is a brief 
     coverLetter: F:\Path\To\CoverLetter.pdf
   ```
 
-For a full list of configurable options, refer to the [sample config.yaml](config.yaml).
+For a full list of configurable options, refer to `config.yaml.example` in te root.
 
 
 
@@ -251,36 +252,18 @@ This tool is intended for personal use and educational purposes only. Automated 
 
 
 
-Here’s the updated **Acknowledgments** section with a coffee emoji (`☕`) added after "coffee" in the final line, formatted for GitHub Markdown:
-
----
 
 ## Acknowledgments
 
 A heartfelt thank you to everyone who has inspired and supported the development of the **LinkedIn Easy Apply Bot**. This project wouldn’t be possible without:
 
 - **The Open-Source Community**: For the incredible tools that power this bot, especially [Python](https://www.python.org/) for its versatility, [Selenium](https://selenium.dev/) for robust web automation, and [PyYAML](https://pyyaml.org/) for seamless configuration management.
-- **Contributors**: To those who will join this journey—your ideas, code, and feedback will shape the future of this tool. Your contributions are deeply valued.
-- **Job Seekers & Developers**: Your real-world needs and curiosity about automation sparked this project. This bot is built for you.
+- **Contributors**: To those who will join this journey, your ideas, code, and feedback will shape the future of this tool. Your contributions are deeply valued.
+- **Job Seekers & Developers**: Your real world needs and curiosity about automation sparked this project. This bot is built for you.
 - **LinkedIn Team**: For providing a platform that connects job seekers with opportunities, making tools like this bot possible and meaningful.
 - **Original Developer**: [Nathan Duma](https://github.com/NathanDuma) with [NathanDuma/LinkedIn-Easy-Apply-Bot](https://github.com/NathanDuma/LinkedIn-Easy-Apply-Bot). I initially worked with Nathan’s bot, but after it stopped functioning, I drew inspiration from his work to create this new version. About 10% of the current codebase builds on his foundation, though I’ve added my own ideas and plan to fully reimagine it in future releases. Huge thanks to Nathan Duma.
 
 Special appreciation goes to the countless cups of coffee ☕ and late-night coding sessions that fueled version 1.0.0. Here’s to building something impactful together!
 
----
-
-## Contact
-
-For questions or suggestions, feel free to open an issue or reach out via [your.email@example.com](mailto:your.email@example.com).
-
-Happy job hunting!
 
 ---
-
-### Notes for Customization
-- Replace `yourusername` with your GitHub username in the clone URL.
-- Update the email placeholders (`your.email@example.com`) with your contact info.
-- If you add a `LICENSE` file, link it in the README.
-- Adjust paths (e.g., `F:\Python\Selenium\`) to reflect your local setup.
-
-This README is professional, detailed, and user-friendly, making it suitable for a public repository. Push this along with your five files (`main.py`, `linkedinZero.py`, `config.yaml`, `css_codes.py`, and `requirements.txt`) to your GitHub repository for a polished presentation!
