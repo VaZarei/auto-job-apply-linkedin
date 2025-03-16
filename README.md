@@ -1,5 +1,10 @@
 
+<p align="center"> <a href="https://www.python.org"><img src="https://www.python.org/static/img/python-logo.png" alt="Python Logo" width="350"/></a> <a href="https://selenium.dev"><img src="https://selenium.dev/images/selenium_logo_square_green.png" alt="Selenium Logo" width="100"/></a> <a href="https://www.linkedin.com"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn Logo" width="50"/></a> </p>
+
+
 # LinkedIn Easy Apply Bot
+
+
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![Selenium](https://img.shields.io/badge/Selenium-4.0%2B-orange) ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -15,6 +20,7 @@ The **LinkedIn Easy Apply Bot** is an advanced automation tool designed to strea
 - **Error Management**: Handles form submission errors, job page refreshes, and application limits gracefully.
 - **Logging**: Tracks applied and "Easy Apply" jobs, exporting details to JSON files for record-keeping.
 - **Anti-Detection Measures**: Includes options to disable system lock and mimics human-like behaviour with randomized delays.
+- **Minimal CSS Footprint**: Uses just ~7 core CSS selectors, dynamically deriving others as needed. This keeps maintenance low even when LinkedIn updates its interface.
 - **Extensible**: Modular design allows for easy addition of new features or modifications.
 
 ---
@@ -28,20 +34,7 @@ Before using the bot, ensure you have the following installed:
 - **ChromeDriver**: Automatically managed via `webdriver_manager`, but ensure compatibility with your Chrome version.
 - **Git**: For cloning the repository. [Download Git](https://git-scm.com/downloads)
 
-### Required Python Libraries
-Install the dependencies using the following command:
-```bash
-pip install -r requirements.txt
-```
 
-Contents of `requirements.txt`:
-```
-selenium==4.8.0
-webdriver_manager==3.8.5
-pyautogui==0.9.53
-pyyaml==6.0
-validate_email==1.3
-```
 
 ---
 
@@ -50,24 +43,45 @@ validate_email==1.3
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/linkedin-easy-apply-bot.git
-   cd linkedin-easy-apply-bot
    ```
-
+3. **Content of clone**
+   ```
+   linkedin-easy-apply-bot/
+   ├── config.yaml           # Configuration file config.yaml.example to config.yaml
+   ├── main.py               # Main script
+   ├── linkedinZero.py       # Core bot logic
+   ├── variable_values.py    # CSS selectors for LinkedIn
+   ├── requirements.txt      # Dependencies
+   ├── export_data/          # Logs and output
+   │   ├── apply_status/     # Applied job history
+   │   ├── errors/           # Error logs
+   │   ├── tempforms/        # Form analysis
+   │   └── discard_company/  # Blacklisted companies
+   |── README.md             # This file
+   |__ css_documents/        # all documents about CSS code locations used
+   ```
 2. **Install Dependencies**:
    ```bash
+   cd linkedin-easy-apply-bot
+   ```
+    ```bash
    pip install -r requirements.txt
    ```
-
-3. **Set Up Chrome Debugging Profile**:
-   - Open Chrome via the command line to enable remote debugging:
-     ```bash
-     "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\selenium-profile"
-     ```
-   - Keep this Chrome instance open while running the bot.
-
-4. **Configure the Bot**:
-   - Copy the `config.yaml` file from the repository and customize it (see [Configuration](#configuration) below).
-   - Place your resume and optional cover letter in a directory without spaces (e.g., `F:\Python\Selenium\Resume.pdf`).
+   
+   Contents of `requirements.txt`:
+   ```
+   selenium==4.8.0
+   webdriver_manager==3.8.5
+   pyautogui==0.9.53
+   pyyaml==6.0
+   validate_email==1.3
+   ```
+3. **Configure the Bot**:
+   - Rename config.yaml.example to config.yaml. This file is already located in the root directory of the code, and it’s best to keep it there.
+   - If you move it, update the line yaml_file_path = "config.yaml" in main.py to the new path.
+   - Edit config.yaml with your LinkedIn credentials, job preferences, and personal details (see Configuration).
+   - Place your resume (and optional cover letter) in a directory without spaces (e.g., F:\Myresumes\Resume.pdf).
+   - For best results, upload your resume to LinkedIn manually beforehand, as the bot can reuse it and avoid path-related issues.
 
 ---
 
@@ -77,18 +91,28 @@ validate_email==1.3
    - Edit `config.yaml` with your LinkedIn credentials, job preferences, and personal information.
    - Ensure the file is stored locally and **not uploaded** to any public repository for security.
 
-2. **Run the Bot**:
+
+2. **Set Up Chrome Debugging Profile**:
+   - Open Chrome via the command line to enable remote debugging: (Run this code in your terminal)
+     ```bash
+     "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\selenium-profile"
+     ```
+   - Keep this Chrome instance open while running the bot.
+3. **Log in manually**:
+   - To minimize the risk of encountering CAPTCHAs while using the LinkedIn Easy Apply Bot, After launching the Chrome instance, log in to your LinkedIn account manually. Once logged in, navigate away from the page before starting the bot. This prevents the bot from triggering LinkedIn’s automated security checks during login.
+
+3. **Run the Bot**:
    - Open a terminal in the project directory and execute:
      ```bash
      python main.py
      ```
    - The bot will connect to the existing Chrome session, navigate to LinkedIn, and begin applying to jobs.
 
-3. **Monitor Progress**:
+4. **Monitor Progress**:
    - Check the console for real-time updates on job applications.
    - Review exported JSON files in the `export_files` directory for applied job logs.
 
-4. **Stop the Bot**:
+5. **Stop the Bot**:
    - Press `Ctrl+C` in the terminal to stop the script gracefully.
 
 ---
@@ -146,13 +170,18 @@ For a full list of configurable options, refer to the [sample config.yaml](confi
 
 ```
 linkedin-easy-apply-bot/
-├── main.py                # Entry point to initialize and run the bot
-├── linkedinZero.py        # Core bot logic for job searching and form handling
-├── config.yaml            # Configuration file (template)
-├── css_codes.py           # CSS selectors for LinkedIn elements
-├── requirements.txt       # Python dependencies
-├── export_files/          # Directory for JSON logs (auto-generated)
-└── tempforms/             # Temporary form data storage (auto-generated)
+├── config.yaml           # Configuration file config.yaml.example to config.yaml
+├── main.py               # Main script
+├── linkedinZero.py       # Core bot logic
+├── variable_values.py    # CSS selectors for LinkedIn
+├── requirements.txt      # Dependencies
+├── export_data/          # Logs and output
+│   ├── apply_status/     # Applied job history
+│   ├── errors/           # Error logs
+│   ├── tempforms/        # Form analysis
+│   └── discard_company/  # Blacklisted companies
+|── README.md             # This file
+|__ css_documents/        # all documents about CSS code locations used
 ```
 
 ---
