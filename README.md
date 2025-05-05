@@ -95,12 +95,18 @@ Before using the bot, ensure you have the following installed:
 
 
 2. **Set Up Chrome Debugging Profile**:
+   For Windows: 
    - Open Chrome via the command line to enable remote debugging: (Run this code in your terminal)
      ```bash
      "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\selenium-profile"
      ```
+   For Linux:
+    ```bash
+     chromium --remote-debugging-port=9222 --user-data-dir=/tmp/selenium-profile
+     ```
+   
    - Keep this Chrome instance open while running the bot.
-3. **Log in manually**:
+4. **Log in manually**:
    - To minimize the risk of encountering CAPTCHAs while using the LinkedIn Easy Apply Bot, After launching the Chrome instance, log in to your LinkedIn account manually. Once logged in, navigate away from the page before starting the bot. This prevents the bot from triggering LinkedIn’s automated security checks during login.
 
 3. **Run the Bot**:
