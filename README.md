@@ -95,6 +95,7 @@ Before using the bot, ensure you have the following installed:
 
 
 2. **Set Up Chrome Debugging Profile**:
+   
    For Windows: 
    - Open Chrome via the command line to enable remote debugging: (Run this code in your terminal)
      ```bash
