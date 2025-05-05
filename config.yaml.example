@@ -194,7 +194,6 @@ personalInfo:
  Linkedin: www.linkedin.com/in/
  Website: "" # github/website is interchangeable here
  MessageToManager: "Hi, I am interested to join your organization. Please have a look at my resume. Thank you." # Keep message short and within the quotes. This is a testing feature and may not work.
-
 # ------------ Additional parameters: USA employment crap ---------------
 eeo:
  gender: male
